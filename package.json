@@ -1,0 +1,12 @@
+{
+  "name": "offshore-indexer",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node --env-file=../offshore-dashboard/.env src/index.js",
+    "dev":   "node --env-file=../offshore-dashboard/.env --watch src/index.js"
+  },
+  "dependencies": {
+    "postgres": "^3.4.4"
+  }
+}
