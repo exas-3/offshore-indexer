@@ -104,9 +104,9 @@ export async function setup() {
       hex_word(data, 2) / 1000000000000000000                  AS usdm_fee,
       -- word 3: net USDm sent to recipient (user's proceeds)
       hex_word(data, 3) / 1000000000000000000                  AS usdm_net,
-      -- effective price of DIRTY in USDm
+      -- effective price of DIRTY in USDm (gross = pre-fee, matches market price)
       CASE WHEN hex_word(data, 0) > 0
-        THEN (hex_word(data, 3) / hex_word(data, 0))::FLOAT
+        THEN (hex_word(data, 1) / hex_word(data, 0))::FLOAT
         ELSE NULL
       END                                                      AS price_usdm_per_dirty
     FROM idx_logs
